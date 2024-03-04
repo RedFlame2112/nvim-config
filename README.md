@@ -1,3 +1,6 @@
+This is a modified fork off of [daniilty/vsnvim](https://github.com/daniilty/vsnvim/)
+
+
 # Neovim IDE
 
 This build of neovim is intended to give user a nice ide-like experience in their terminals.
