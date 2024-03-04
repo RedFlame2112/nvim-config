@@ -21,3 +21,5 @@ vim.api.nvim_set_keymap('n', '<space>e', '<cmd>lua vim.diagnostic.open_float()<C
 vim.api.nvim_set_keymap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
 vim.api.nvim_set_keymap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
 vim.api.nvim_set_keymap('n', '<C-S>', '<cmd>lua require("spectre").toggle()<CR>', opts)
+vim.api.nvim_set_keymap('n', '<C-f>', '<cmd>Telescope<CR>', opts)
+vim.api.nvim_set_keymap('n', '<C-a>', '<cmd>Telescope live_grep<CR>', opts)
