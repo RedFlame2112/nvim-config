@@ -3,6 +3,10 @@ return function()
   local cmp = require'cmp'
   vim.o.completeopt = "menu,menuone,noselect"
 
+
+  -- Ensure the LuaSnip is available
+  local has_luasnip, luasnip = pcall(require, "luasnip")
+
   local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
   capabilities.textDocument.completion.completionItem.snippetSupport = true
   
@@ -10,7 +14,9 @@ return function()
     snippet = {
       -- REQUIRED - you must specify a snippet engine
       expand = function(args)
-        vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
+        if has_luasnip then
+          luasnip.lsp_expand(args.body)
+        end
       end,
     },
     window = {
@@ -37,7 +43,7 @@ return function()
     }),
     sources = cmp.config.sources({
       { name = 'nvim_lsp' },
-      { name = 'vsnip' },
+      { name = 'luasnip' },
     }, {
       { name = 'buffer' },
     })
