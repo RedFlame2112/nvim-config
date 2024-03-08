@@ -15,4 +15,5 @@ require('lazy').setup('plugins')
 require('bindings')
 require('opts')
 require('colorscheme')
-
+--tabnine config
+--require('tabnine')
