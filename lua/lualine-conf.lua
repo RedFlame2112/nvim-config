@@ -61,13 +61,15 @@ return function()
       },
       lualine_b = {},
       lualine_c = {
-        {'filename', separator = { left = '', right = '⏽' }, icon = ''},
+        {'filename', separator = { left = '', right = '⏽' }, icon = '🗎'},
         {'branch', icon = '┃  '},
       },
       lualine_x = {
         {'hostname', separator = { left = '', right = '' }, icon = ''},
       },
-      lualine_y = {},
+      lualine_y = {
+        { 'lsp_progress', seperator = { left = '', right = '' }, icon = '💡' }
+      },
       lualine_z = {
         { 'location', separator = { left = '', right = '' }, left_padding = 1 },
       },

@@ -45,4 +45,3 @@ return {
     enforce_regular_tabs = false,
   }
 }
-
