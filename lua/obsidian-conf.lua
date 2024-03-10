@@ -42,5 +42,4 @@ return {
       opts = { buffer = true },
     },
   },
-
 }

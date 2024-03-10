@@ -23,7 +23,15 @@ vim.api.nvim_set_keymap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', op
 vim.api.nvim_set_keymap('n', '<C-S>', '<cmd>lua require("spectre").toggle()<CR>', opts)
 vim.api.nvim_set_keymap('n', '<C-f>', '<cmd>Telescope<CR>', opts)
 vim.api.nvim_set_keymap('n', '<C-a>', '<cmd>Telescope live_grep<CR>', opts)
-vim.api.nvim_set_keymap('n', ']c', '<cmd>VimtexCompile<CR>', opts)
+
+-- Use nvim_create_autocmd to set the keymap ']c' only for LaTeX files
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "tex",
+    callback = function()
+        vim.api.nvim_set_keymap('n', ']c', '<cmd>VimtexCompile<CR>', opts)
+    end,
+})
+
 -- Snippet keymaps
 vim.api.nvim_set_keymap('i', '<Tab>', "v:lua.require'luasnip'.expand_or_jumpable() ? '<Plug>luasnip-expand-or-jump' : '<Tab>'", {silent = true, expr = true})
 vim.api.nvim_set_keymap('i', '<S-Tab>', "<cmd>lua require'luasnip'.jump(-1)<CR>", {silent = true, noremap = true})
