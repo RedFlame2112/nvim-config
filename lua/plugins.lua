@@ -1,3 +1,5 @@
+--local highlight = as.highlight
+
 return {
   {
     'nvim-lualine/lualine.nvim',
@@ -267,20 +269,6 @@ return {
   	end
   },
   {
-     'VonHeikemen/fine-cmdline.nvim',
-     config = function()
-       require('fine-cmdline').setup({
-        cmdline = {
-          enable_keymaps = true,
-          smart_history = true,
-          prompt = ' λ '
-        }
-       })
-     end,
- 
-     dependencies = { 'MunifTanjim/nui.nvim' },
-  },
-  {
     "williamboman/mason.nvim",
     cmd = { "Mason", "MasonInstall", "MasonInstallAll", "MasonUninstall", "MasonUninstallAll", "MasonLog" },
     opts = {
@@ -321,5 +309,41 @@ return {
       end
     end,
   },
+  {
+    'rcarriga/nvim-notify',
+    event = 'VeryLazy',
+    config = function()
+      require('nvim-notify')
+    end,
+  },
+  {
+    "mrded/nvim-lsp-notify",
+    dependencies = { "rcarriga/nvim-notify" },
+    config = function()
+      require("lsp-notify").setup({
+        icons = {
+          spinner = { "|", "/", "-", "\\" }, -- `= false` to disable only this icon
+          done = "!" -- `= false` to disable only this icon
+        }
+      })
+    end
+  },
+  {
+    "folke/noice.nvim",
+    event = "VeryLazy",
+    opts = {
+      -- add any options here
+    },
+    dependencies = {
+      -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+      "MunifTanjim/nui.nvim",
+      -- OPTIONAL:
+      --   `nvim-notify` is only needed, if you want to use the notification view.
+      --   If not available, we use `mini` as the fallback
+      "rcarriga/nvim-notify",
+    },
+    config = require('noice_setup')
+  }
+
 }
 
