@@ -247,6 +247,9 @@ return {
     end
   },
   {
+    'saadparwaiz1/cmp_luasnip'
+  },
+  {
   	"epwalsh/obsidian.nvim",
   	version = "*",  -- recommended, use latest release instead of latest commit
   	lazy = true,
@@ -347,5 +350,20 @@ return {
     },
     opts = require('leetcode-opts')
   },
+  { 
+    "folke/trouble.nvim",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    opts = require('trouble-opts')
+  },
+  {
+    "Exafunction/codeium.nvim",
+    dependencies = {
+        "nvim-lua/plenary.nvim",
+        "hrsh7th/nvim-cmp",
+    },
+    config = function()
+        require("codeium").setup({
+        })
+    end
+  },
 }
-

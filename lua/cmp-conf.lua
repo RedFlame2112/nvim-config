@@ -13,6 +13,7 @@ return function()
   cmp.setup({
     snippet = {
       -- REQUIRED - you must specify a snippet engine
+      experimental = { ghost_text = true },
       expand = function(args)
         if has_luasnip then
           luasnip.lsp_expand(args.body)
@@ -26,7 +27,14 @@ return function()
     formatting = {
       fields = { "kind", "abbr", "menu" },
       format = function(entry, vim_item)
-        local kind = require("lspkind").cmp_format({ mode = "symbol_text", maxwidth = 50 })(entry, vim_item)
+        local kind = require("lspkind").cmp_format({ 
+          mode = "symbol", 
+          maxwidth = 50,
+          ellipsis_char = "...",
+          symbol_map = {
+            Codeium = "",
+          },
+        })(entry, vim_item)
         local strings = vim.split(kind.kind, "%s", { trimempty = true })
         kind.kind = " " .. (strings[1] or "") .. " "
         kind.menu = "    (" .. (strings[2] or "") .. ")"
@@ -43,7 +51,13 @@ return function()
     }),
     sources = cmp.config.sources({
       { name = 'nvim_lsp' },
-      { name = 'luasnip' },
+      { name = 'luasnip', 
+        option = { 
+          use_show_condition = false,
+          show_autosnippets = true
+        } 
+      },
+      { name = 'codeium' }, 
     }, {
       { name = 'buffer' },
     })
@@ -70,7 +84,8 @@ return function()
   cmp.setup.cmdline(':', {
     mapping = cmp.mapping.preset.cmdline(),
     sources = cmp.config.sources({
-      { name = 'path' }
+      { name = 'path'   },
+      { name = 'buffer' },
     }, {
       { name = 'cmdline' }
     })
@@ -79,3 +94,4 @@ return function()
   -- Setup lspconfig.
   local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 end
+
