@@ -1,0 +1,50 @@
+{
+  "Dijkstra's Algorithm": {
+    "prefix": "dijk",
+    "body": [
+      "def dijkstra(${1:graph}, ${2:start}):",
+      "    \"\"\"",
+      "    Run dijkstra's algorithm on a given graph",
+      "    with a start node",
+      "    @param graph: Dict(Node => Dict(Node => dist))",
+      "    @param start: Node",
+      "    @return List[] (distances)",
+      "    \"\"\"",
+      "    distances = {node: float('inf') for node in ${1:graph}}",
+      "    distances[${2:start}] = 0",
+      "    queue = [(0, ${2:start})]",
+      "    while queue:",
+      "        current_distance, current_node = heapq.heappop(queue)",
+      "        if current_distance > distances[current_node]:",
+      "            continue",
+      "        for neighbor, weight in ${1:graph}[current_node].items():",
+      "            distance = current_distance + weight",
+      "            if distance < distances[neighbor]:",
+      "                distances[neighbor] = distance",
+      "                heapq.heappush(queue, (distance, neighbor))",
+      "    return distances",
+      "  "
+    ],
+    "description": "Dijkstra's Algorithm"
+  },
+  "Longest Increasing Subsequence": {
+    "prefix": "LIS",
+    "body": [
+      "def lis(nums):",
+      "   \"\"\"",
+      "   Return the longest increasing subsequence in list ",
+      "   nums",
+      "   @param nums: List[]",
+      "   \"\"\"",
+      "    if not nums:",
+      "        return 0",
+      "    dp = [1] * len(nums)",
+      "    for i in range(1, len(nums)):",
+      "        for j in range(i):",
+      "            if nums[i] > nums[j]:",
+      "                dp[i] = max(dp[i], dp[j] + 1)",
+      "    return max(dp)"
+    ],
+    "description": "Longest Increasing Subsequence"
+  }
+}
