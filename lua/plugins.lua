@@ -317,18 +317,6 @@ return {
     end,
   },
   {
-    "mrded/nvim-lsp-notify",
-    dependencies = { "rcarriga/nvim-notify" },
-    config = function()
-      require("lsp-notify").setup({
-        icons = {
-          spinner = { "|", "/", "-", "\\" }, -- `= false` to disable only this icon
-          done = "!" -- `= false` to disable only this icon
-        }
-      })
-    end
-  },
-  {
     "folke/noice.nvim",
     event = "VeryLazy",
     opts = {
