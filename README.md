@@ -19,9 +19,9 @@ Dashboard uses VSCode logo, but this config is not intended to be similar to thi
 ![Screenshot1](https://github.com/daniilty/vsnvim/blob/master/src/s1.png)
 ![Screenshot2](https://github.com/daniilty/vsnvim/blob/master/src/s2.png)
 ![Screenshot3](https://github.com/daniilty/vsnvim/blob/master/src/s3.png)
-![Screenshot4](https://github.com/RedFlame2112/nvim-config/tree/master/src/s4.png)
-![Screenshot5](https://github.com/RedFlame2112/nvim-config/tree/master/src/s5.png)
-![Screenshot6](https://github.com/RedFlame2112/nvim-config/tree/master/src/s6.png)
+![Screenshot4](https://github.com/RedFlame2112/nvim-config/blob/master/src/s4.png)
+![Screenshot5](https://github.com/RedFlame2112/nvim-config/blob/master/src/s5.png)
+![Screenshot6](https://github.com/RedFlame2112/nvim-config/blob/master/src/s6.png)
 
 ### Some shortcuts:
   * Ctrl+t - toggle terminal
