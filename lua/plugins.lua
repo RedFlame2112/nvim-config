@@ -119,8 +119,8 @@ return {
           },
           footer = {
             '                                             ',
-            '            Visual Studio Code               ',
-            '             Editing evolved                 '
+            '             Nvim now with VSCode            ',
+            '                  Support! 🔥                '
           },
           week_header = {
            enable = false,

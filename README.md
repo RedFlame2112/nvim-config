@@ -1,6 +1,3 @@
-This is a modified fork off of [daniilty/vsnvim](https://github.com/daniilty/vsnvim/)
-
-
 # Neovim IDE
 
 This build of neovim is intended to give user a nice ide-like experience in their terminals.
@@ -23,7 +20,7 @@ Dashboard uses VSCode logo, but this config is not intended to be similar to thi
 * Smooth, lossless note taking with Obsidian.nvim 
 
 
-![Screenshot1](https://github.com/daniilty/vsnvim/blob/master/src/s1.png)
+![Screenshot1](https://github.com/RedFlame2112/nvim-config/blob/master/src/s1.png)
 ![Screenshot2](https://github.com/daniilty/vsnvim/blob/master/src/s2.png)
 ![Screenshot3](https://github.com/daniilty/vsnvim/blob/master/src/s3.png)
 ![Screenshot4](https://github.com/RedFlame2112/nvim-config/blob/master/src/s4.png)
