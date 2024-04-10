@@ -15,6 +15,13 @@ Dashboard uses VSCode logo, but this config is not intended to be similar to thi
 * Rainbow indents
 * Git signs
 * In file search(ripgrep is needed)
+* LeetCode integration for solving leetcode problems
+* Snippets engine for automatic code completion
+* LLM based support with inbuilt GPT prompt reader (need GPT api + API key environment variable)
+* Automatic code generation with Codeium
+* VimTeX keybindings, snippets, and full support for writing papers, completing homework assignments, etc.
+* Smooth, lossless note taking with Obsidian.nvim 
+
 
 ![Screenshot1](https://github.com/daniilty/vsnvim/blob/master/src/s1.png)
 ![Screenshot2](https://github.com/daniilty/vsnvim/blob/master/src/s2.png)
@@ -26,6 +33,8 @@ Dashboard uses VSCode logo, but this config is not intended to be similar to thi
 ### Some shortcuts:
   * Ctrl+t - toggle terminal
   * Ctrl+n - toggle file tree
+  * Ctrl+f - toggle Telescope 
+  * Ctrl+a - toggle live grep search
   * Ctrl+s - toggle search field
   * ZZ - in case you don't know how to exit vim
   * Esc - to exit telescope
