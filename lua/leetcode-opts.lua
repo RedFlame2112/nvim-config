@@ -1,4 +1,4 @@
 return {
   ---@type lc.lang
-  lang = "python",
+  lang = "cpp",
 }
