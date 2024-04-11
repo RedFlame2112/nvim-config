@@ -194,7 +194,6 @@ return {
     },
     config = require('cmp-conf'),
   },
-  
   {
     'neovim/nvim-lspconfig',
     lazy = true,               
@@ -208,8 +207,6 @@ return {
     ft = {'html', 'rust', 'javascript', 'javascriptreact', 'python', 'typescript', 'typescriptreact', 'c', 'cpp', 'go', 'html', 'css' },
     cmd = { "LspInfo", "LspInstall", "LspUninstall" },
   },
-  
-  
   {
     'ray-x/go.nvim',
     lazy = true,
@@ -528,5 +525,23 @@ return {
         },
       })
     end
+  },
+  {
+		'itchyny/calendar.vim',
+		cmd = 'Calendar',
+		init = function()
+			vim.g.calendar_google_calendar = 1
+			vim.g.calendar_google_task = 1
+			vim.g.calendar_cache_directory = vim.fn.stdpath('data') .. '/calendar'
+		end,
+	},
+  { 
+    "folke/neodev.nvim", 
+    lazy = true,
+  },
+  {
+    'windwp/nvim-autopairs',
+    event = "InsertEnter",
+    config = true,
   },
 }
