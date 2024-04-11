@@ -10,10 +10,10 @@ return function()
   local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
   capabilities.textDocument.completion.completionItem.snippetSupport = true
   
-  cmp.setup({
+  cmp.setup({ 
+    experimental = { ghost_text = true },
     snippet = {
-      -- REQUIRED - you must specify a snippet engine
-      experimental = { ghost_text = true },
+      -- REQUIRED - you must specify a snippet engine 
       expand = function(args)
         if has_luasnip then
           luasnip.lsp_expand(args.body)

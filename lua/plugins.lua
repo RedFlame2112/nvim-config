@@ -1,20 +1,17 @@
 --local highlight = as.highlight
 
 local GPT_WELCOME_MESSAGE = [[
-                                       _____
-                                      /   __)\   
-                                      |  /  \ \
-                                   ___|  |__/ /
-                                  / (_    _)_/   Ask and you shall receive
-                                 / /  |  |       
-                                 \ \__/  | 
-                                  \(_____/    
-                               
+       _____
+      /   __)\   
+      |  /  \ \
+   ___|  |__/ /
+  / (_    _)_/   Ask and you shall receive
+ / /  |  |       
+ \ \__/  | 
+  \(_____/    
+
 ]]
-
-
-
-
+ 
 return {
   {
     'nvim-lualine/lualine.nvim',
@@ -27,8 +24,7 @@ return {
     'catppuccin/nvim',
     name = 'catppuccin',
     lazy = false,
-  },
-
+  },  
   {
     'kyazdani42/nvim-web-devicons',
     lazy = true,
@@ -66,7 +62,12 @@ return {
       require("ibl").setup(require('indent'))
     end,
   },
-  
+  { "Bekaboo/dropbar.nvim", event = "UIEnter", opts = {} },
+  {
+      "rebelot/heirline.nvim",
+      optional = true,
+      opts = function(_, opts) opts.winbar = nil end,
+  },  
   {
     'glepnir/dashboard-nvim',
     event = 'VimEnter',
@@ -131,7 +132,6 @@ return {
     dependencies = {'nvim-tree/nvim-web-devicons'},
     lazy = true,
   },
-
   -- productivity
   {
     'akinsho/nvim-toggleterm.lua',
@@ -164,7 +164,6 @@ return {
     end,
     cmd = 'NvimTreeToggle',
   },
-
   {
     'nvim-telescope/telescope.nvim', version = '0.1.4',
     dependencies = { 'nvim-lua/plenary.nvim' },
@@ -388,38 +387,12 @@ return {
     "jackMort/ChatGPT.nvim",
     event = "VeryLazy",
     config = function()
+      local home = vim.fn.expand("$HOME")
       require("chatgpt").setup({
-          api_key_cmd = "echo $OPENAI_API_KEY",
-          edit_with_instructions = {
-          toggle_diff = "<C-d>"
-        },
-        chat = {
-          welcome_message = GPT_WELCOME_MESSAGE,
-        },
-        keymaps = {
-          close = "<C-c>",
-          yank_last = "<C-y>",
-          yank_last_code = "<C-k>",
-          scroll_up = "<C-u>",
-          scroll_down = "<C-d>",
-          new_session = "<C-n>",
-          cycle_windows = "<Tab>",
-          cycle_modes = "<C-f>",
-          next_message = "<C-j>",
-          prev_message = "<C-k>",
-          select_session = "<Space>",
-          rename_session = "r",
-          delete_session = "d",
-          draft_message = "<C-r>",
-          edit_message = "e",
-          delete_message = "d",
-          toggle_settings = "<C-o>",
-          toggle_sessions = "<C-p>",
-          toggle_help = "<C-h>",
-          toggle_message_role = "<C-r>",
-          toggle_system_role_open = "<C-s>",
-          stop_generating = "<C-x>",
-        },
+          api_key_cmd = "cat " .. home .. "/gpt.key",
+          chat = {
+            welcome_message = GPT_WELCOME_MESSAGE,
+          },
       })
     end,
     dependencies = {
@@ -428,5 +401,132 @@ return {
         "folke/trouble.nvim",
         "nvim-telescope/telescope.nvim"
     }
+  },
+  {
+    'gko/vim-coloresque',
+  },
+  {
+    "tomasky/bookmarks.nvim",
+    event = "VeryLazy",
+    dependencies = {
+      "nvim-telescope/telescope.nvim",
+    },
+    config = function()
+      require("bookmarks").setup({
+        save_file = vim.fn.expand("$HOME/.local/share/nvim/bookmarks"), -- bookmarks save file path
+        keywords = {
+          ["@t"] = "✔ ", -- mark annotation startswith @t ,signs this icon as `Todo`
+          ["@w"] = "⚠ ", -- mark annotation startswith @w ,signs this icon as `Warn`
+          ["@f"] = "⛏ ", -- mark annotation startswith @f ,signs this icon as `Fix`
+          ["@n"] = "✎ ", -- mark annotation startswith @n ,signs this icon as `Note`
+        },
+        on_attach = function(buffer)
+          local bm = require("bookmarks")
+          local map = vim.keymap.set
+          map("n", "mm", bm.bookmark_toggle) -- add or remove bookmark at current line
+          map("n", "mi", bm.bookmark_ann) -- add or edit mark annotation at current line
+          map("n", "mc", bm.bookmark_clean) -- clean all marks in local buffer
+          map("n", "mn", bm.bookmark_next) -- jump to next mark in local buffer
+          map("n", "mp", bm.bookmark_prev) -- jump to previous mark in local buffer
+          map("n", "ml", bm.bookmark_list) -- show marked file list in quickfix window
+        end,
+      })
+
+      require("telescope").load_extension("bookmarks")
+    end,
+  },
+  {
+    'ibhagwan/fzf-lua',
+    keys = { '<C-f>', '<C-g>' },
+    config = function()
+      local fzf_lua = require('fzf-lua')
+
+      fzf_lua.setup({
+        actions = {
+          files = {
+            ['default'] = fzf_lua.actions.file_edit_or_qf,
+            ['ctrl-x'] = fzf_lua.actions.file_split,
+            ['ctrl-v'] = fzf_lua.actions.file_vsplit,
+          },
+        },
+        winopts_fn = function()
+          local height = 15
+
+          return {
+            border = { '—', '—', '—', '', '', '', '', '' },
+            row = vim.o.lines - vim.o.cmdheight - 3 - height,
+            column = 1,
+            height = height,
+            width = vim.o.columns + 1,
+          }
+        end,
+      })
+
+      vim.keymap.set('n', '<C-f>', function()
+        fzf_lua.files({
+          prompt = '> ',
+          previewer = false,
+          cwd_prompt = false,
+          fzf_opts = { ['--info'] = 'inline' },
+        })
+      end)
+
+      vim.keymap.set('n', '<C-g>', function()
+        fzf_lua.live_grep_native({
+          prompt = '> ',
+          no_header_i = false,
+          previewer = false,
+         exec_empty_query = true,
+          fzf_opts = { ['--info'] = 'inline', ['--nth'] = '2..' },
+        })
+      end)
+    end,
+  },
+  {
+    'ldelossa/nvim-ide',
+    config = function()
+      local bufferlist      = require('ide.components.bufferlist')
+      local explorer        = require('ide.components.explorer')
+      local outline         = require('ide.components.outline')
+      local callhierarchy   = require('ide.components.callhierarchy')
+      local timeline        = require('ide.components.timeline')
+      local terminal        = require('ide.components.terminal')
+      local terminalbrowser = require('ide.components.terminal.terminalbrowser')
+      local changes         = require('ide.components.changes')
+      local commits         = require('ide.components.commits')
+      local branches        = require('ide.components.branches')
+      local bookmarks       = require('ide.components.bookmarks')
+    
+      require('ide').setup({
+        icon_set = 'nerd',
+        log_level = 'info',
+        cmd = "Workspace",
+       -- Explorer = {
+       --   keymaps = {
+       --     open = "x",
+       --   }
+       -- },
+        panel_groups = {
+          explorer = {
+            outline.Name,
+            bufferlist.Name,
+            explorer.Name,
+            bookmarks.Name,
+            callhierarchy.Name,
+            terminalbrowser.Name,
+          },
+          terminal = { terminal.Name },
+          git = { changes.Name, commits.Name, timeline.Name, branches.Name },
+        },
+        workspaces = {
+          -- which panels to open by default, one of: 'left', 'right', 'both', 'none'
+          auto_open = "none",
+        },
+        panels = {
+            left = "explorer",
+            right = "git"
+        },
+      })
+    end
   },
 }
