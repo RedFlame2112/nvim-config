@@ -44,6 +44,6 @@ vim.api.nvim_set_keymap('n', '<C-o><C-l>', '<cmd>Workspace LeftPanelToggle<CR>',
 vim.api.nvim_set_keymap('n', '<C-o><C-r>', '<cmd>Workspace RightPanelToggle<CR>', opts)
 vim.api.nvim_set_keymap('n', '<C-o><C-b>', '<cmd>Workspace BottomPanelToggle<CR>', opts)
 vim.api.nvim_set_keymap('n', '<F2>', '<cmd>ChatGPT<CR>', opts)
-
+vim.api.nvim_set_keymap('n', '<F3>', '<cmd>ChatGPTActAs<CR>', opts)
 
 

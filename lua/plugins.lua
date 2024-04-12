@@ -529,7 +529,7 @@ return {
   {
 		'itchyny/calendar.vim',
 		cmd = 'Calendar',
-		init = function()
+    init = function()
 			vim.g.calendar_google_calendar = 1
 			vim.g.calendar_google_task = 1
 			vim.g.calendar_cache_directory = vim.fn.stdpath('data') .. '/calendar'
@@ -544,4 +544,9 @@ return {
     event = "InsertEnter",
     config = true,
   },
+  {
+    "sindrets/diffview.nvim",
+  }
 }
+
+
