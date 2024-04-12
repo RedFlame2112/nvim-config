@@ -40,7 +40,7 @@ Dashboard uses VSCode logo for fun ;)
   * Ctrl+i - go to implementation
   * Ctrl+d - go to definition
   * Ctrl+D - go to declaration
-  * Ctrl+e - lsp diagnostic
+  * ]+d - lsp diagnostic
   * K - hover using lsp
   * F2 - ChatGPT prompt (needs api key)
   * Ctrl+o+r - Open Git diagnostics
