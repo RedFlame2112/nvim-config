@@ -43,7 +43,16 @@ vim.api.nvim_set_keymap('s', '<C-E>', "v:lua.require'luasnip'.choice_active() ? 
 vim.api.nvim_set_keymap('n', '<C-o><C-l>', '<cmd>Workspace LeftPanelToggle<CR>', opts)
 vim.api.nvim_set_keymap('n', '<C-o><C-r>', '<cmd>Workspace RightPanelToggle<CR>', opts)
 vim.api.nvim_set_keymap('n', '<C-o><C-b>', '<cmd>Workspace BottomPanelToggle<CR>', opts)
+
+
+--GPT backed interactive functionality
 vim.api.nvim_set_keymap('n', '<F2>', '<cmd>ChatGPT<CR>', opts)
 vim.api.nvim_set_keymap('n', '<F3>', '<cmd>ChatGPTActAs<CR>', opts)
-
-
+vim.api.nvim_set_keymap('n', '<F4>', '<cmd>ChatGPTCompleteCode<CR>', opts)
+vim.api.nvim_set_keymap('n', ',r', ':ChatGPTRun ', opts)
+vim.api.nvim_set_keymap('v', ',rf', '<cmd>ChatGPTRun fix_bugs<CR>', opts)
+vim.api.nvim_set_keymap('v', ',ra', '<cmd>ChatGPTRun add_tests<CR>', opts)
+vim.api.nvim_set_keymap('v', ',rk', '<cmd>ChatGPTRun keywords<CR>', opts)
+vim.api.nvim_set_keymap('v', ',rd', '<cmd>ChatGPTRun docstring<CR>', opts)
+vim.api.nvim_set_keymap('v', ',re', '<cmd>ChatGPTRun explain_code<CR>', opts)
+vim.api.nvim_set_keymap('v', ',rs', '<cmd>ChatGPTRun summarize<CR>', opts)

@@ -12,6 +12,7 @@ local GPT_WELCOME_MESSAGE = [[
 
 ]]
  
+
 return {
   {
     'nvim-lualine/lualine.nvim',

@@ -50,6 +50,8 @@ return function()
     cmd = {"verible-verilog-ls", "--rules_config_search"},
     handlers = handlers,
   }
+  lspconfig.lua_ls.setup{handlers = handlers, settings = {Lua = {diagnostics = {globals = {"vim"}}}}}
+
 
   local signs = {Error = " ", Warn = " ", Hint = " ", Info = " "}
 
