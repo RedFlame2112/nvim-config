@@ -46,6 +46,10 @@ return function()
   lspconfig.html.setup{handlers = handlers,}
   lspconfig.tsserver.setup{handlers = handlers}
   lspconfig.pyright.setup{handlers = handlers}
+  lspconfig.verible.setup{
+    cmd = {"verible-verilog-ls", "--rules_config_search"},
+    handlers = handlers,
+  }
 
   local signs = {Error = " ", Warn = " ", Hint = " ", Info = " "}
 
@@ -73,4 +77,5 @@ return function()
   vim.cmd('autocmd BufWritePre *.c lua vim.lsp.buf.format()')
   vim.cmd('autocmd BufWritePre *.rs lua vim.lsp.buf.format()')
   vim.cmd('autocmd BufWritePre *.ts,*.js,*.tsx,*.jsx lua vim.lsp.buf.format()')
+  vim.cmd('autocmd BufWritePre *.v,*.sv lua vim.lsp.buf.format()')
 end

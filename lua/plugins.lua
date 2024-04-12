@@ -204,7 +204,7 @@ return {
         name = 'lspkind',
       },
     },
-    ft = {'html', 'rust', 'javascript', 'javascriptreact', 'python', 'typescript', 'typescriptreact', 'c', 'cpp', 'go', 'html', 'css' },
+    ft = {'html', 'rust', 'javascript', 'javascriptreact', 'python', 'typescript', 'typescriptreact', 'c', 'cpp', 'go', 'html', 'css', 'v', 'sv', },
     cmd = { "LspInfo", "LspInstall", "LspUninstall" },
   },
   {

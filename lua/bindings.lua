@@ -34,8 +34,9 @@ vim.api.nvim_create_autocmd("FileType", {
 
 -- Snippet keymaps
 vim.api.nvim_set_keymap('i', '<S-Tab>', "<cmd>lua require'luasnip'.jump(-1)<CR>", {silent = true, noremap = true})
-vim.api.nvim_set_keymap('s', '<Tab>', "<cmd>lua require('luasnip').jump(1)<CR>", {silent = true, noremap = true})
+vim.api.nvim_set_keymap('i', '<Tab>', "<cmd>lua require('luasnip').jump(1)<CR>", {silent = true, expr = true})
 vim.api.nvim_set_keymap('s', '<S-Tab>', "<cmd>lua require('luasnip').jump(-1)<CR>", {silent = true, noremap = true})
+vim.api.nvim_set_keymap('i', '<Tab>', "v:lua.require'luasnip'.expand_or_jumpable() ? '<Plug>luasnip-expand-or-jump' : '<Tab>'", {silent = true, expr = true, noremap = true})
 vim.api.nvim_set_keymap('i', '<C-E>', "v:lua.require'luasnip'.choice_active() ? '<Plug>luasnip-next-choice' : '<C-E>'", {silent = true, expr = true})
 vim.api.nvim_set_keymap('s', '<C-E>', "v:lua.require'luasnip'.choice_active() ? '<Plug>luasnip-next-choice' : '<C-E>'", {silent = true, expr = true})
 --make a keymap for toggling Left, Bottom, Right panels with Workspace LeftPanelToggle, RightPanelToggle, BottomPanelToggle
@@ -43,3 +44,6 @@ vim.api.nvim_set_keymap('n', '<C-o><C-l>', '<cmd>Workspace LeftPanelToggle<CR>',
 vim.api.nvim_set_keymap('n', '<C-o><C-r>', '<cmd>Workspace RightPanelToggle<CR>', opts)
 vim.api.nvim_set_keymap('n', '<C-o><C-b>', '<cmd>Workspace BottomPanelToggle<CR>', opts)
 vim.api.nvim_set_keymap('n', '<F2>', '<cmd>ChatGPT<CR>', opts)
+
+
+
