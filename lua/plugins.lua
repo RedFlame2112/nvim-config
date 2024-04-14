@@ -118,6 +118,28 @@ return {
               action = 'Telescope live_grep',
               key = 'a',
             },
+            {
+              icon = ' ',
+              icon_hl = '@variable',
+              desc = 'Configure Neovim',
+              group = 'Label',
+              action = 'edit ~/.config/nvim/lua/plugins.lua',
+              key = 'c',
+            },
+            {
+              icon = ' ',
+              icon_hl = '@variable',
+              desc = 'Open Mason',
+              group = 'Label',
+              action = 'Mason',
+              key = 'm',
+            },
+            {
+              icon = ' ',
+              desc = "Open Lazy Profile",
+              action = "Lazy profile",
+              key = 'l'
+            },
           },
           footer = {
             '                                             ',
