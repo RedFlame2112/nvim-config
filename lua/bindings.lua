@@ -48,7 +48,6 @@ vim.api.nvim_set_keymap('n', '<C-o><C-b>', '<cmd>Workspace BottomPanelToggle<CR>
 --GPT backed interactive functionality
 vim.api.nvim_set_keymap('n', '<F2>', '<cmd>ChatGPT<CR>', opts)
 vim.api.nvim_set_keymap('n', '<F3>', '<cmd>ChatGPTActAs<CR>', opts)
-vim.api.nvim_set_keymap('n', '<F4>', '<cmd>ChatGPTCompleteCode<CR>', opts)
 vim.api.nvim_set_keymap('n', ',r', ':ChatGPTRun ', {silent = true, noremap = true})
 vim.api.nvim_set_keymap('v', ',rf', '<cmd>ChatGPTRun fix_bugs<CR>', {silent = true, noremap = true})
 vim.api.nvim_set_keymap('v', ',ra', '<cmd>ChatGPTRun add_tests<CR>', {silent = true, noremap = true})
@@ -56,3 +55,8 @@ vim.api.nvim_set_keymap('v', ',rk', '<cmd>ChatGPTRun keywords<CR>', {silent = tr
 vim.api.nvim_set_keymap('v', ',rd', '<cmd>ChatGPTRun docstring<CR>', {silent = true, noremap = true})
 vim.api.nvim_set_keymap('v', ',re', '<cmd>ChatGPTRun explain_code<CR>', {silent = true, noremap = true})
 vim.api.nvim_set_keymap('v', ',rs', '<cmd>ChatGPTRun summarize<CR>', {silent = true, noremap = true})
+vim.api.nvim_set_keymap('v', ',rc', '<cmd>ChatGPTCompleteCode<CR>', {silent = true, noremap = true})
+
+--Debugging 
+vim.api.nvim_set_keymap('n', ',d', '<cmd>lua require("dapui").toggle()<CR>', {silent = true, noremap = true})
+vim.api.nvim_set_keymap('v', ',de', '<cmd>lua require("dapui").eval()<CR>', {silent = true, noremap = true})

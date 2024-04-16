@@ -53,16 +53,7 @@ return {
       'BufReadPost *.lua',
     },
     lazy = true,
-  },
-  
-  {
-    'lukas-reineke/indent-blankline.nvim',
-    lazy = true,
-    event = 'BufEnter',
-    config = function()
-      require("ibl").setup(require('indent'))
-    end,
-  },
+  }, 
   { "Bekaboo/dropbar.nvim", event = "UIEnter", opts = {} },
   {
       "rebelot/heirline.nvim",
@@ -254,7 +245,14 @@ return {
     end,
     lazy = true,
   },
- 
+  {
+    'lukas-reineke/indent-blankline.nvim',
+    lazy = true,
+    event = 'BufEnter',
+    config = function()
+      require("ibl").setup(require('indent'))
+    end,
+  },
   -- git stuff
   {
     'lewis6991/gitsigns.nvim',
@@ -561,6 +559,21 @@ return {
   { 
     "folke/neodev.nvim", 
     lazy = true,
+    config = function()
+      require("neodev").setup({
+        library = { plugins = { "nvim-dap-ui" }, types = true }
+      })
+      local lspconfig = require('lspconfig')
+      lspconfig.lua_ls.setup({
+        settings = {
+          Lua = {
+            completion = {
+              callSnippet = "Replace"
+            }
+          }
+        }
+      })
+    end
   },
   {
     'windwp/nvim-autopairs',
@@ -569,7 +582,23 @@ return {
   },
   {
     "sindrets/diffview.nvim",
-  }
+  },
+  {
+    "klen/nvim-test",
+    config = function()
+      require('nvim-test').setup()
+    end
+  },
+  { 
+    "rcarriga/nvim-dap-ui", 
+    dependencies = {
+      "mfussenegger/nvim-dap", 
+      "nvim-neotest/nvim-nio",
+      "nvim-telescope/telescope-dap.nvim",
+      "theHamsta/nvim-dap-virtual-text",
+    },
+    config = require('debugger'),
+  },
 }
 
 
