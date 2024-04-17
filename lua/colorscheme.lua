@@ -8,7 +8,7 @@ require("catppuccin").setup({
         dark = "mocha",
     },
     compile_path = vim.fn.stdpath("cache") .. "/catppuccin",
-    transparent_background = false,
+    transparent_background = true,
     term_colors = false,
     dim_inactive = {
         enabled = false,
@@ -41,7 +41,7 @@ require("catppuccin").setup({
         treesitter = true,
     },
     custom_highlights = function(C)
-      local transparent_background = false
+      local transparent_background = true
 			return {
 				CmpItemKindSnippet = { fg = colors.base, bg = colors.mauve },
 				CmpItemKindKeyword = { fg = colors.base, bg = colors.red },
@@ -81,3 +81,5 @@ require("catppuccin").setup({
 })
 
 vim.cmd('colorscheme catppuccin')
+--FOR ZENMODE
+vim.cmd("highlight ZenBg guibg=#010d14")

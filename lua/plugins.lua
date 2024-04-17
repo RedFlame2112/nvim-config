@@ -599,6 +599,10 @@ return {
     },
     config = require('debugger'),
   },
+  {
+    'folke/zen-mode.nvim',
+    opts = require('zen'),
+  },
 }
 
 

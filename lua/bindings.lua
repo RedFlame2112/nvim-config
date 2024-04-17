@@ -43,7 +43,8 @@ vim.api.nvim_set_keymap('s', '<C-E>', "v:lua.require'luasnip'.choice_active() ? 
 vim.api.nvim_set_keymap('n', '<C-o><C-l>', '<cmd>Workspace LeftPanelToggle<CR>', opts)
 vim.api.nvim_set_keymap('n', '<C-o><C-r>', '<cmd>Workspace RightPanelToggle<CR>', opts)
 vim.api.nvim_set_keymap('n', '<C-o><C-b>', '<cmd>Workspace BottomPanelToggle<CR>', opts)
-
+--Turn on Zenmode
+vim.api.nvim_set_keymap('n', '<C-m>', '<cmd>ZenMode<CR>', opts)
 
 --GPT backed interactive functionality
 vim.api.nvim_set_keymap('n', '<F2>', '<cmd>ChatGPT<CR>', opts)
