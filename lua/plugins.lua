@@ -131,7 +131,7 @@ return {
               key = 'l'
             },
             {
-              icon = '󰀱',
+              icon = '󰀱 ',
               desc = 'Open harpoon buffers',
               action = "lua toggle_telescope_from_harpoon()",
               key = 'h'
