@@ -41,7 +41,23 @@ return {
     persist_buffer_sort = true, -- whether or not custom sorted buffers should persist
     -- can also be a table containing 2 custom separators
     -- [focused and unfocused]. eg: { '|', '|' }
-    separator_style = "thick",
+    separator_style = "thin",
     enforce_regular_tabs = false,
+  },
+  highlights = {
+    buffer_selected = {
+      fg = '#cba6f7',
+      bg = '#282131',
+      bold = true,
+      italic = true,
+    },
+    tab_separator = {
+      fg = '#cba6f7',
+      bg = '#cba6f7',
+    },
+    tab_selected = {
+      fg = '#cba6f7',
+      bg = '#282131',
+    },
   }
 }

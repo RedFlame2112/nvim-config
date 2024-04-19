@@ -603,6 +603,24 @@ return {
     'folke/zen-mode.nvim',
     opts = require('zen'),
   },
+  {
+    "folke/which-key.nvim", 
+    event = "VeryLazy",
+    init = function()
+      vim.o.timeout = true
+      vim.o.timeoutlen = 300
+    end,
+    opts = require('which-key-conf'),
+    config = function()
+      require('which-key').setup()
+    end
+  },
+  {
+    "ThePrimeagen/harpoon",
+    branch = "harpoon2",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    config = require('harpoon-conf')
+  },
 }
 
 
