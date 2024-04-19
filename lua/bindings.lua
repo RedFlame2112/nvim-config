@@ -24,8 +24,8 @@ vim.api.nvim_set_keymap('n', '<leader>e','<cmd>lua vim.diagnostic.open_float()<C
 vim.api.nvim_set_keymap('n', '<leader>D', '<cmd>lua vim.lsp.buf.declaration()<CR>', more(opts, { desc = 'Go to Declaration' }))
 vim.api.nvim_set_keymap('n', '<leader>d', '<cmd>lua vim.lsp.buf.definition()<CR>', more(opts, { desc = 'Go to Definition' }))
 vim.api.nvim_set_keymap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', more(opts, { desc = 'Hover over buffer' }))
-vim.api.nvim_set_keymap('n', '<C-I>', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-vim.api.nvim_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+vim.api.nvim_set_keymap('n', '<C-I>', '<cmd>lua vim.lsp.buf.implementation()<CR>', more(opts, { desc = 'Go to Implementation' }))
+vim.api.nvim_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', more(opts, { desc = 'Signature Help' }))
 vim.api.nvim_set_keymap('n', '<leader>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
 vim.api.nvim_set_keymap('n', '<leader>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
 vim.api.nvim_set_keymap('n', '<leader>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
@@ -40,8 +40,10 @@ vim.api.nvim_set_keymap('n', '<space>e', '<cmd>lua vim.diagnostic.open_float()<C
 vim.api.nvim_set_keymap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
 vim.api.nvim_set_keymap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
 vim.api.nvim_set_keymap('n', '<C-S>', '<cmd>lua require("spectre").toggle()<CR>', opts)
-vim.api.nvim_set_keymap('n', '<leader>t', '<cmd>Telescope<CR>', opts)
-vim.api.nvim_set_keymap('n', '<C-a>', '<cmd>Telescope live_grep<CR>', opts)
+vim.api.nvim_set_keymap('n', '<leader>tt', '<cmd>Telescope<CR>', more(opts, { desc = 'Open Telescope' }))
+vim.api.nvim_set_keymap('n', '<leader>ts', '<cmd>Telescope live_grep<CR>', more(opts, { desc = 'Search in files' }))
+vim.api.nvim_set_keymap('n', '<leader>ta', '<cmd>Telescope autocommands<CR>', more(opts, { desc = 'Find autocommands' }))
+vim.api.nvim_set_keymap('n', '<leader>th', '<cmd>Telescope highlights<CR>', more(opts, { desc = 'See telescope highlights' }))
 
 -- Set the keymap '<leader>c' only for LaTeX files
 vim.api.nvim_create_autocmd("FileType", {
