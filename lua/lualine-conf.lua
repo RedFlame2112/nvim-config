@@ -63,6 +63,7 @@ return function()
       lualine_c = {
         {'filename', separator = { left = '', right = '⏽' }, icon = '🗎'},
         {'branch', icon = '┃  '},
+        {"harpoon2" },
       },
       lualine_x = {
         {'hostname', separator = { left = '', right = '' }, icon = ''},

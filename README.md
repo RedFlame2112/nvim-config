@@ -20,7 +20,8 @@ Dashboard uses VSCode logo for fun ;)
 * VimTeX keybindings, snippets, and full support for writing papers, completing homework assignments, etc.
 * Smooth, lossless note taking with Obsidian
 * (Experimental) Dropbar support for documentation and buffer navigation
-
+* Buffer management, finder, and navigator with Harpoon
+* Zen mode for focused, undistracted coding
 
 ![Screenshot1](https://github.com/RedFlame2112/nvim-config/blob/master/src/s1.png)
 ![Screenshot4](https://github.com/RedFlame2112/nvim-config/blob/master/src/s4.png)
@@ -43,5 +44,8 @@ Dashboard uses VSCode logo for fun ;)
   * ]+d - lsp diagnostic
   * K - hover using lsp
   * F2 - ChatGPT prompt (needs api key)
-  * Ctrl+o+r - Open Git diagnostics
-  * Ctrl+o+l - Open Workspace details
+  * ,+o+r - Open Git diagnostics
+  * ,+o+l - Open Workspace details
+  * ,r - ChatGPT running command tree
+
+You can find more details about keybinds through Which-key.nvim

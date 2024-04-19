@@ -131,6 +131,12 @@ return {
               action = "Lazy profile",
               key = 'l'
             },
+            {
+              icon = '󰀱',
+              desc = 'Open harpoon buffers',
+              action = "lua toggle_telescope_from_harpoon()",
+              key = 'h'
+            }
           },
           footer = {
             '                                             ',
@@ -621,6 +627,13 @@ return {
     dependencies = { "nvim-lua/plenary.nvim" },
     config = require('harpoon-conf')
   },
+  {
+    "letieu/harpoon-lualine",
+    dependencies = {
+      {
+        "ThePrimeagen/harpoon",
+        branch = "harpoon2",
+      }
+    },
+  },
 }
-
-
