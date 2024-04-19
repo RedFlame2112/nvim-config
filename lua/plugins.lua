@@ -20,7 +20,6 @@ return {
     config = require('lualine-conf'),
     event = 'BufEnter',
   },
-  
   {
     'catppuccin/nvim',
     name = 'catppuccin',
@@ -444,7 +443,7 @@ return {
           ["@f"] = "⛏ ", -- mark annotation startswith @f ,signs this icon as `Fix`
           ["@n"] = "✎ ", -- mark annotation startswith @n ,signs this icon as `Note`
         },
-        on_attach = function(buffer)
+        on_attach = function()
           local bm = require("bookmarks")
           local map = vim.keymap.set
           map("n", "mm", bm.bookmark_toggle) -- add or remove bookmark at current line

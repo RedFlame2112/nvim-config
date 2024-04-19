@@ -47,7 +47,6 @@ return {
   highlights = {
     buffer_selected = {
       fg = '#cba6f7',
-      bg = '#282131',
       bold = true,
       italic = true,
     },

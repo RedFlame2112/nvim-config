@@ -30,27 +30,26 @@ return function()
           pattern = "^%?",
           lang = 'regex',
         },
-        cmdline = { 
-          pattern = "^:", 
-          icon = "λ", 
-          lang = "vim" 
+        cmdline = {
+          pattern = "^:",
+          icon = "λ",
+          lang = "vim"
         },
-        filter = { 
-          pattern = "^:%s*!", 
-          icon = "$", 
-          lang = "bash" 
+        filter = {
+          pattern = "^:%s*!",
+          icon = "$",
+          lang = "bash"
         },
       },
     },
     routes = {
       {
         filter = {
-          event = "msg_show",
           kind = "search_count",
+          event = { "msg_showmode", "msg_show" },
         },
         opts = { skip = true },
         view = "notify",
-        filter = { event = "msg_showmode" },
       },
     },
     messages = {

@@ -44,7 +44,6 @@ vim.api.nvim_set_keymap('n', '<leader>tt', '<cmd>Telescope<CR>', more(opts, { de
 vim.api.nvim_set_keymap('n', '<leader>ts', '<cmd>Telescope live_grep<CR>', more(opts, { desc = 'Search in files' }))
 vim.api.nvim_set_keymap('n', '<leader>ta', '<cmd>Telescope autocommands<CR>', more(opts, { desc = 'Find autocommands' }))
 vim.api.nvim_set_keymap('n', '<leader>th', '<cmd>Telescope highlights<CR>', more(opts, { desc = 'See telescope highlights' }))
-
 -- Set the keymap '<leader>c' only for LaTeX files
 vim.api.nvim_create_autocmd("FileType", {
     pattern = "tex",
@@ -83,7 +82,7 @@ set_keymaps(gpt_modes, '<leader>rs', '<cmd>ChatGPTRun summarize<CR>', more(opts,
 set_keymaps(gpt_modes, '<leader>rc', '<cmd>ChatGPTCompleteCode<CR>', more(opts, { desc = 'GPT: Complete Code' }))
 set_keymaps(gpt_modes, '<leader>ri', '<cmd>ChatGPTEditCodeWithInstructions<CR>', more(opts, { desc = 'GPT: Edit Code with Instructions' }))
 
-vim.api.nvim_set_keymap('n', '<leader>T', '<cmd>TroubleToggle<CR>', more(opts, { desc = 'Toggle Trouble Diagnostics' }))
+vim.api.nvim_set_keymap('n', '<leader>td', '<cmd>TroubleToggle<CR>', more(opts, { desc = 'Toggle Diagnostics pane' }))
 --Debugging 
 vim.api.nvim_set_keymap('n', '<leader>d', '<cmd>lua require("dapui").toggle()<CR>', more(opts, { desc = 'DAP: Toggle UI' }))
 vim.api.nvim_set_keymap('v', '<leader>de', '<cmd>lua require("dapui").eval()<CR>', more(opts, { desc = 'DAP: Evaluate expression' }))

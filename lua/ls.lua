@@ -43,6 +43,7 @@ return function()
 
   lspconfig.gopls.setup {cmd = {"gopls", "serve"}, settings = {gopls = {analyses = {unusedparams = true}, staticcheck = true}}, handlers = handlers}
   lspconfig.rust_analyzer.setup{handlers = handlers}
+  lspconfig.lua_ls.setup{handlers = handlers, settings = {Lua = {diagnostics = {globals = {"vim"}}}}}
   lspconfig.html.setup{handlers = handlers,}
   lspconfig.tsserver.setup{handlers = handlers}
   lspconfig.pyright.setup{handlers = handlers}
@@ -50,7 +51,6 @@ return function()
     cmd = {"verible-verilog-ls", "--rules_config_search"},
     handlers = handlers,
   }
-  lspconfig.lua_ls.setup{handlers = handlers, settings = {Lua = {diagnostics = {globals = {"vim"}}}}}
 
 
   local signs = {Error = " ", Warn = " ", Hint = " ", Info = " "}
