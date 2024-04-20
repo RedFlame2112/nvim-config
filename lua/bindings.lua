@@ -80,9 +80,19 @@ set_keymaps(gpt_modes, '<leader>rd', '<cmd>ChatGPTRun docstring<CR>', more(opts,
 set_keymaps(gpt_modes, '<leader>re', '<cmd>ChatGPTRun explain_code<CR>', more(opts, { desc = 'GPT: Explain Code' }))
 set_keymaps(gpt_modes, '<leader>rs', '<cmd>ChatGPTRun summarize<CR>', more(opts, { desc = 'GPT: Summarize Code' }))
 set_keymaps(gpt_modes, '<leader>rc', '<cmd>ChatGPTCompleteCode<CR>', more(opts, { desc = 'GPT: Complete Code' }))
-set_keymaps(gpt_modes, '<leader>ri', '<cmd>ChatGPTEditCodeWithInstructions<CR>', more(opts, { desc = 'GPT: Edit Code with Instructions' }))
+set_keymaps(gpt_modes, '<leader>ri', '<cmd>ChatGPTEditWithInstructions<CR>', more(opts, { desc = 'GPT: Edit Code with Instructions' }))
 
 vim.api.nvim_set_keymap('n', '<leader>td', '<cmd>TroubleToggle<CR>', more(opts, { desc = 'Toggle Diagnostics pane' }))
 --Debugging 
 vim.api.nvim_set_keymap('n', '<leader>d', '<cmd>lua require("dapui").toggle()<CR>', more(opts, { desc = 'DAP: Toggle UI' }))
 vim.api.nvim_set_keymap('v', '<leader>de', '<cmd>lua require("dapui").eval()<CR>', more(opts, { desc = 'DAP: Evaluate expression' }))
+
+ 
+vim.api.nvim_set_keymap('n', '<leader>la', '<cmd>lua require("harpoon"):list():add()<CR>', { noremap = true, silent = true, desc = '[Harpoon] Add harpoon buffer' })
+vim.api.nvim_set_keymap('n', '<leader>ld', '<cmd>lua require("harpoon"):list():remove()<CR>', { noremap = true, silent = true, desc = '[Harpoon] Remove harpoon buffer' })
+vim.api.nvim_set_keymap('n', '<leader>1', '<cmd>lua require("harpoon"):list():select(1)<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>2', '<cmd>lua require("harpoon"):list():select(2)<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>3', '<cmd>lua require("harpoon"):list():select(3)<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>4', '<cmd>lua require("harpoon"):list():select(4)<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>bp', '<cmd>lua require("harpoon"):list():prev()<CR>', { noremap = true, silent = true, desc = '[Harpoon] Toggle previous' })
+vim.api.nvim_set_keymap('n', '<leader>bn', '<cmd>lua require("harpoon"):list():next()<CR>', { noremap = true, silent = true, desc = '[Harpoon] Toggle next' })

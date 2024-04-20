@@ -1,4 +1,3 @@
-
 return {
  workspaces = {
     {
@@ -28,7 +27,7 @@ return {
   -- way then set 'mappings = {}'.
   mappings = {
     -- Overrides the 'gf' mapping to work on markdown/wiki links within your vault.
-    ["gf"] = {
+    ["<leader>gf"] = {
       action = function()
         return require("obsidian").util.gf_passthrough()
       end,

@@ -26,19 +26,7 @@ return function()
 
   vim.keymap.set("n", "<leader>h", function() toggle_telescope(harpoon:list()) end,
     { desc = "[Harpoon] Open window" })
-  vim.keymap.set("n", "<space>la", function() harpoon:list():add() end,
-    { desc = "[Harpoon] Add harpoon buffer" })
-  vim.keymap.set("n", "<space>ld", function() harpoon:list():remove() end,
-    { desc = "[Harpoon] Remove harpoon buffer" })
-  vim.keymap.set("n", "<leader>1", function() harpoon:list():select(1) end)
-  vim.keymap.set("n", "<leader>2", function() harpoon:list():select(2) end)
-  vim.keymap.set("n", "<leader>3", function() harpoon:list():select(3) end)
-  vim.keymap.set("n", "<leader>4", function() harpoon:list():select(4) end) 
-  --Toggle between harpoon buffers
-  vim.keymap.set("n", "<leader>bp", function() harpoon:list():prev() end,
-    { desc = "[Harpoon] Toggle previous" })
-  vim.keymap.set("n", "<leader>bn", function() harpoon:list():next() end,
-    { desc = "[Harpoon] Toggle next" })
+  
 
   --For dashboard 
   
