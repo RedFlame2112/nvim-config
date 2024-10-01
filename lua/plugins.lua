@@ -270,16 +270,20 @@ return {
   {
     'kaarmu/typst.vim',
     ft = 'typst',
-    lazy=false,
+    lazy=true,
   },
   {
     "L3MON4D3/LuaSnip",
+    lazy = true,
     dependencies = { "rafamadriz/friendly-snippets" },
-    config = function() 
-      require("luasnip.loaders.from_vscode").lazy_load() 
-      require("luasnip.loaders.from_vscode").lazy_load({ 
-        paths = { "~/.config/nvim/snippets/*" } 
-      })
+    config = function()
+      
+      -- get from friendly-snippets
+      require("luasnip.loaders.from_vscode").lazy_load()
+
+      -- also get from ~/.config/nvim/snippets 
+      require("luasnip.loaders.from_vscode").lazy_load({paths = { "./lua/snippets" }})
+
     end
   },
   {
@@ -291,12 +295,24 @@ return {
   	lazy = true,
   	ft = "markdown",
   	-- Replace the above line with this if you only want to load obsidian.nvim for markdown files in your vault:
-  	-- event = {
-  	--   -- If you want to use the home shortcut '~' here you need to call 'vim.fn.expand'.
-  	--   -- E.g. "BufReadPre " .. vim.fn.expand "~" .. "/my-vault/**.md"
-  	--   "BufReadPre path/to/my-vault/**.md",
-  	--   "BufNewFile path/to/my-vault/**.md",
-  	-- },
+  	event = {
+  	   -- If you want to use the home shortcut '~' here you need to call 'vim.fn.expand'.
+  	   -- E.g. "BufReadPre " .. vim.fn.expand "~" .. "/my-vault/**.md"
+  	   "BufReadPre " .. vim.fn.expand "~/notes/**/*.md",
+  	   "BufNewFile " .. vim.fn.expand "~/notes/**/*.md",
+  	},
+    keys = {
+      { '<leader>nd', ':ObsidianToday<cr>', desc = 'obsidian [d]aily' },
+      { '<leader>nt', ':ObsidianToday 1<cr>', desc = 'obsidian [t]omorrow' },
+      { '<leader>ny', ':ObsidianToday -1<cr>', desc = 'obsidian [y]esterday' },
+      { '<leader>nb', ':ObsidianBacklinks<cr>', desc = 'obsidian [b]acklinks' },
+      { '<leader>nl', ':ObsidianLink<cr>', desc = 'obsidian [l]ink selection' },
+      { '<leader>nf', ':ObsidianFollowLink<cr>', desc = 'obsidian [f]ollow link' },
+      { '<leader>nn', ':ObsidianNew<cr>', desc = 'obsidian [n]ew' },
+      { '<leader>ns', ':ObsidianSearch<cr>', desc = 'obsidian [s]earch' },
+      { '<leader>no', ':ObsidianQuickSwitch<cr>', desc = 'obsidian [o]pen quickswitch' },
+      { '<leader>nO', ':ObsidianOpen<cr>', desc = 'obsidian [O]pen in app' },
+    },
   	dependencies = {
     	-- Required.
     	"nvim-lua/plenary.nvim",
@@ -309,6 +325,7 @@ return {
   },
   {
     "williamboman/mason.nvim",
+    lazy = true,
     cmd = { "Mason", "MasonInstall", "MasonInstallAll", "MasonUninstall", "MasonUninstallAll", "MasonLog" },
     opts = {
       ensure_installed = {}, -- not an option from mason.nvim
@@ -373,6 +390,7 @@ return {
   },
   {
     "kawre/leetcode.nvim",
+    lazy = true,
     build = ":TSUpdate html",
     dependencies = {
         "nvim-telescope/telescope.nvim",
@@ -389,7 +407,41 @@ return {
   { 
     "folke/trouble.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" },
-    opts = require('trouble-opts')
+    opts = require('trouble-opts'),
+    cmd = "Trouble",
+    keys = {
+    {
+      "<leader>xx",
+      "<cmd>Trouble diagnostics toggle<cr>",
+      desc = "Diagnostics (Trouble)",
+    },
+    {
+      "<leader>xX",
+      "<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
+      desc = "Buffer Diagnostics (Trouble)",
+    },
+    {
+      "<leader>cs",
+      "<cmd>Trouble symbols toggle focus=false<cr>",
+      desc = "Symbols (Trouble)",
+    },
+    {
+      "<leader>xl",
+      "<cmd>Trouble lsp toggle focus=false win.position=right<cr>",
+      desc = "LSP Definitions / references / ... (Trouble)",
+    },
+    {
+      "<leader>xL",
+      "<cmd>Trouble loclist toggle<cr>",
+      desc = "Location List (Trouble)",
+    },
+    {
+      "<leader>xQ",
+      "<cmd>Trouble qflist toggle<cr>",
+      desc = "Quickfix List (Trouble)",
+    },
+  },
+
   },
   {
     "Exafunction/codeium.nvim",
@@ -548,15 +600,6 @@ return {
       })
     end
   },
-  {
-		'itchyny/calendar.vim',
-		cmd = 'Calendar',
-    init = function()
-			vim.g.calendar_google_calendar = 1
-			vim.g.calendar_google_task = 1
-			vim.g.calendar_cache_directory = vim.fn.stdpath('data') .. '/calendar'
-		end,
-	},
   { 
     "folke/neodev.nvim", 
     lazy = true,
@@ -618,6 +661,7 @@ return {
   },
   {
     "ThePrimeagen/harpoon",
+    --lazy = true,
     branch = "harpoon2",
     dependencies = { "nvim-lua/plenary.nvim" },
     config = require('harpoon-conf')

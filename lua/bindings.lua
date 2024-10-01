@@ -40,10 +40,18 @@ vim.api.nvim_set_keymap('n', '<space>e', '<cmd>lua vim.diagnostic.open_float()<C
 vim.api.nvim_set_keymap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
 vim.api.nvim_set_keymap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
 vim.api.nvim_set_keymap('n', '<C-S>', '<cmd>lua require("spectre").toggle()<CR>', opts)
+vim.api.nvim_set_keymap('v', '<C-S>', '<cmd>lua require("spectre").visual()<CR>', opts)
 vim.api.nvim_set_keymap('n', '<leader>tt', '<cmd>Telescope<CR>', more(opts, { desc = 'Open Telescope' }))
 vim.api.nvim_set_keymap('n', '<leader>ts', '<cmd>Telescope live_grep<CR>', more(opts, { desc = 'Search in files' }))
 vim.api.nvim_set_keymap('n', '<leader>ta', '<cmd>Telescope autocommands<CR>', more(opts, { desc = 'Find autocommands' }))
 vim.api.nvim_set_keymap('n', '<leader>th', '<cmd>Telescope highlights<CR>', more(opts, { desc = 'See telescope highlights' }))
+
+
+--LSP trigger commands 
+vim.api.nvim_set_keymap('n', '<leader>si', '<cmd>LspInstall<CR>', more(opts, { desc = 'Install LSP' }))
+vim.api.nvim_set_keymap('n', '<leader>ss', '<cmd>LspStart<CR>', more(opts, { desc = 'Start LSP' }))
+vim.api.nvim_set_keymap('n', '<leader>se', '<cmd>LspStop<CR>', more(opts, { desc = 'Stop LSP' }))
+
 -- Set the keymap '<leader>c' only for LaTeX files
 vim.api.nvim_create_autocmd("FileType", {
     pattern = "tex",
@@ -82,7 +90,6 @@ set_keymaps(gpt_modes, '<leader>rs', '<cmd>ChatGPTRun summarize<CR>', more(opts,
 set_keymaps(gpt_modes, '<leader>rc', '<cmd>ChatGPTCompleteCode<CR>', more(opts, { desc = 'GPT: Complete Code' }))
 set_keymaps(gpt_modes, '<leader>ri', '<cmd>ChatGPTEditWithInstructions<CR>', more(opts, { desc = 'GPT: Edit Code with Instructions' }))
 
-vim.api.nvim_set_keymap('n', '<leader>td', '<cmd>TroubleToggle<CR>', more(opts, { desc = 'Toggle Diagnostics pane' }))
 --Debugging 
 vim.api.nvim_set_keymap('n', '<leader>d', '<cmd>lua require("dapui").toggle()<CR>', more(opts, { desc = 'DAP: Toggle UI' }))
 vim.api.nvim_set_keymap('v', '<leader>de', '<cmd>lua require("dapui").eval()<CR>', more(opts, { desc = 'DAP: Evaluate expression' }))
@@ -96,3 +103,5 @@ vim.api.nvim_set_keymap('n', '<leader>3', '<cmd>lua require("harpoon"):list():se
 vim.api.nvim_set_keymap('n', '<leader>4', '<cmd>lua require("harpoon"):list():select(4)<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>bp', '<cmd>lua require("harpoon"):list():prev()<CR>', { noremap = true, silent = true, desc = '[Harpoon] Toggle previous' })
 vim.api.nvim_set_keymap('n', '<leader>bn', '<cmd>lua require("harpoon"):list():next()<CR>', { noremap = true, silent = true, desc = '[Harpoon] Toggle next' })
+
+

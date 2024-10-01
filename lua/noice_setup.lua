@@ -22,7 +22,6 @@ return function()
         search_down = {
           view = "cmdline",
           pattern = "^/",
-          icon = ':',
           lang = 'regex',
         },
         search_up = {

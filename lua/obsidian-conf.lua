@@ -1,20 +1,12 @@
 return {
  workspaces = {
     {
-      name = "personal",
-      path = "~/vaults/personal",
+      name = "notes",
+      path = "~/notes",
     },
-    {
-      name = "work",
-      path = "~/vaults/work",
-      -- Optional, override certain settings.
-      overrides = {
-        notes_subdir = "~/notes",
-      },
-    },
-  },
+ },
 
-  notes_subdir = "~/notes",
+  notes_subdir = "misc",
   log_level = vim.log.levels.INFO,
   -- completion of wiki links, local markdown links, and tags using nvim-cmp.
   completion = {
@@ -34,9 +26,15 @@ return {
       opts = { noremap = false, expr = true, buffer = true },
     },
     -- Toggle check-boxes.
-    ["<leader>ch"] = {
+    ['<leader>ch'] = {
       action = function()
-        return require("obsidian").util.toggle_checkbox()
+        local line = vim.api.nvim_get_current_line()
+        if line:match '%s*- %[' then
+          require('obsidian').util.toggle_checkbox()
+        elseif line:match '%s*-' then
+          vim.cmd [[s/-/- [ ]/]]
+          vim.cmd.nohlsearch()
+        end
       end,
       opts = { buffer = true },
     },
