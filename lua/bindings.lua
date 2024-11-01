@@ -21,8 +21,8 @@ end
 
 
 vim.api.nvim_set_keymap('n', '<leader>e','<cmd>lua vim.diagnostic.open_float()<CR>', more(opts, { desc = 'Open Diagnostics' }))
-vim.api.nvim_set_keymap('n', '<leader>D', '<cmd>lua vim.lsp.buf.declaration()<CR>', more(opts, { desc = 'Go to Declaration' }))
-vim.api.nvim_set_keymap('n', '<leader>d', '<cmd>lua vim.lsp.buf.definition()<CR>', more(opts, { desc = 'Go to Definition' }))
+vim.api.nvim_set_keymap('n', '<leader>DD', '<cmd>lua vim.lsp.buf.declaration()<CR>', more(opts, { desc = 'Go to Declaration' }))
+vim.api.nvim_set_keymap('n', '<leader>Dd', '<cmd>lua vim.lsp.buf.definition()<CR>', more(opts, { desc = 'Go to Definition' }))
 vim.api.nvim_set_keymap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', more(opts, { desc = 'Hover over buffer' }))
 vim.api.nvim_set_keymap('n', '<C-I>', '<cmd>lua vim.lsp.buf.implementation()<CR>', more(opts, { desc = 'Go to Implementation' }))
 vim.api.nvim_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', more(opts, { desc = 'Signature Help' }))

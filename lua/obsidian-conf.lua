@@ -1,8 +1,8 @@
 return {
  workspaces = {
     {
-      name = "notes",
-      path = "~/notes",
+      name = "CS425 notes",
+      path = "~/Documents/vaults/cs425",
     },
  },
 
