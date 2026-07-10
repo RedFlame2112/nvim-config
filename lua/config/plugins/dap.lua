@@ -1,8 +1,8 @@
-OPTS = require('dap-ui-opts')
+local opts = require('config.plugins.dap_ui')
 
-return function(_, OPTS)
+return function()
   local dap, dapui = require('dap'), require('dapui')
-  dapui.setup(OPTS)
+  dapui.setup(opts)
 
   dap.listeners.before.attach.dapui_config = function()
     dapui.open()

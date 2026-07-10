@@ -1,35 +1,36 @@
 return function()
   local colors = require("palettes").get_palette()
-  local transparent_bg = colors.base
+  local transparent_bg = "NONE"
+  local panel = colors.surface0
 
   local custom_theme = {
     normal = {
-      a = { bg = transparent_bg, fg = colors.lavender, gui = "bold" },
+      a = { bg = panel, fg = colors.teal, gui = "bold" },
       b = { bg = colors.mantle, fg = colors.lavender, gui = "bold" },
-      c = { bg = colors.lavender, fg = colors.base, gui = "bold" },
-    },
-    insert = {
-      a = { bg = transparent_bg, fg = colors.teal, gui = "bold" },
-      b = { bg = colors.mantle, fg = colors.teal, gui = "bold" },
       c = { bg = colors.teal, fg = colors.base, gui = "bold" },
     },
+    insert = {
+      a = { bg = panel, fg = colors.pink, gui = "bold" },
+      b = { bg = colors.mantle, fg = colors.pink, gui = "bold" },
+      c = { bg = colors.pink, fg = colors.base, gui = "bold" },
+    },
     terminal = {
-      a = { bg = colors.base, fg = colors.green, gui = "bold" },
+      a = { bg = panel, fg = colors.green, gui = "bold" },
       b = { bg = colors.mantle, fg = colors.green, gui = "bold" },
       c = { bg = colors.green, fg = colors.base, gui = "bold" },
     },
     command = {
-      a = { bg = colors.base, fg = colors.peach, gui = "bold" },
-      b = { bg = colors.mantle, fg = colors.peach, gui = "bold" },
-      c = { bg = colors.peach, fg = colors.base, gui = "bold" },
+      a = { bg = panel, fg = colors.sky, gui = "bold" },
+      b = { bg = colors.mantle, fg = colors.sky, gui = "bold" },
+      c = { bg = colors.sky, fg = colors.base, gui = "bold" },
     },
     visual = {
-      a = { bg = colors.base, fg = colors.mauve, gui = "bold" },
+      a = { bg = panel, fg = colors.mauve, gui = "bold" },
       b = { bg = colors.mantle, fg = colors.mauve, gui = "bold" },
       c = { bg = colors.mauve, fg = colors.base, gui = "bold" },
     },
     replace = {
-      a = { bg = colors.base, fg = colors.red, gui = "bold" },
+      a = { bg = panel, fg = colors.red, gui = "bold" },
       b = { bg = colors.mantle, fg = colors.red, gui = "bold" },
       c = { bg = colors.red, fg = colors.base, gui = "bold" },
     },
@@ -43,7 +44,7 @@ return function()
   require('lualine').setup {
     options = {
         theme = custom_theme,
-        component_separators = '⏽',
+        component_separators = { left = '┃', right = '┃' },
         section_separators = { left = '', right = '' },
         disabled_filetypes = {
             "NvimTree",
@@ -61,15 +62,15 @@ return function()
       },
       lualine_b = {},
       lualine_c = {
-        {'filename', separator = { left = '', right = '⏽' }, icon = '🗎'},
-        {'branch', icon = '┃  '},
+        {'filename', separator = { left = '', right = '⏽' }, icon = '✓'},
+        {'branch', icon = ''},
         {"harpoon2" },
       },
       lualine_x = {
-        {'hostname', separator = { left = '', right = '' }, icon = ''},
+        {'hostname', separator = { left = '', right = '' }, icon = '󰊠'},
       },
       lualine_y = {
-        { 'lsp_progress', seperator = { left = '', right = '' }, icon = '💡' }
+        { 'lsp_progress', separator = { left = '', right = '' }, icon = '󰒋' }
       },
       lualine_z = {
         { 'location', separator = { left = '', right = '' }, left_padding = 1 },
@@ -86,4 +87,3 @@ return function()
     tabline = {},
   }
 end
-

@@ -1,3 +1,5 @@
+local colors = require("palettes").get_palette()
+
 return {
   options = {
     mode = "buffers", -- set to "tabs" to only show tabpages instead
@@ -7,8 +9,8 @@ return {
     left_mouse_command = "buffer %d",    -- can be a string | function, see "Mouse actions"
     middle_mouse_command = nil,          -- can be a string | function, see "Mouse actions"
     indicator = {
-        icon = '⏽', -- this should be omitted if indicator style is not 'icon'
-        style = 'none',
+        icon = '▎',
+        style = 'icon',
     },
     buffer_close_icon = '',
     modified_icon = '●',
@@ -41,22 +43,56 @@ return {
     persist_buffer_sort = true, -- whether or not custom sorted buffers should persist
     -- can also be a table containing 2 custom separators
     -- [focused and unfocused]. eg: { '|', '|' }
-    separator_style = "thin",
+    separator_style = "slant",
     enforce_regular_tabs = false,
   },
   highlights = {
+    fill = {
+      fg = colors.overlay0,
+      bg = "NONE",
+    },
+    background = {
+      fg = colors.overlay1,
+      bg = "NONE",
+    },
+    buffer_visible = {
+      fg = colors.subtext0,
+      bg = colors.mantle,
+    },
     buffer_selected = {
-      fg = '#cba6f7',
+      fg = colors.teal,
+      bg = colors.surface0,
       bold = true,
-      italic = true,
+      italic = false,
+    },
+    indicator_selected = {
+      fg = colors.pink,
+      bg = colors.surface0,
+    },
+    separator = {
+      fg = colors.mantle,
+      bg = "NONE",
+    },
+    separator_selected = {
+      fg = colors.surface0,
+      bg = "NONE",
     },
     tab_separator = {
-      fg = '#cba6f7',
-      bg = '#cba6f7',
+      fg = colors.mauve,
+      bg = colors.surface0,
     },
     tab_selected = {
-      fg = '#cba6f7',
-      bg = '#282131',
+      fg = colors.teal,
+      bg = colors.surface0,
+      bold = true,
+    },
+    modified = {
+      fg = colors.pink,
+      bg = "NONE",
+    },
+    modified_selected = {
+      fg = colors.pink,
+      bg = colors.surface0,
     },
   }
 }
