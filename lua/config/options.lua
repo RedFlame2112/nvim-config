@@ -9,6 +9,7 @@ opt.wrap = false
 opt.linebreak = true
 opt.scrolloff = 8
 opt.sidescrolloff = 8
+opt.smoothscroll = true
 
 opt.termguicolors = true
 opt.laststatus = 3
@@ -25,6 +26,7 @@ opt.inccommand = "split"
 opt.splitbelow = true
 opt.splitright = true
 opt.splitkeep = "screen"
+opt.fillchars = { eob = " ", fold = " ", foldopen = "", foldclose = "" }
 
 opt.tabstop = 2
 opt.softtabstop = 2
@@ -36,17 +38,21 @@ opt.breakindent = true
 opt.mouse = "a"
 opt.clipboard = "unnamedplus"
 opt.undofile = true
+opt.undolevels = 10000
 opt.swapfile = false
 opt.backup = false
 opt.writebackup = false
 opt.confirm = true
 opt.updatetime = 200
 opt.timeoutlen = 300
+opt.ttimeoutlen = 10
 opt.completeopt = { "menu", "menuone", "noselect" }
+opt.complete = { ".", "w", "b", "u", "t" }
 opt.conceallevel = 1
 opt.fileencoding = "utf-8"
 opt.whichwrap = "b,s,<,>,[,],h,l"
 opt.shortmess:append("Ic")
+opt.virtualedit = "block"
 
 vim.g.loaded_matchparen = 1
 vim.g.loaded_matchit = 1

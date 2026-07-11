@@ -1,51 +1,76 @@
-# Neovim IDE
+# Silver Wolf Neovim
 
-This build of neovim is intended to give user the power of an ide-like experience in their terminals.
-Dashboard uses VSCode logo for fun ;)
+A Neovim 0.12 configuration built around a neon Silver Wolf theme, native LSP, repository-aware Codex completions, and Lazy.nvim.
 
-### Useful features
+## Layout
 
-* Lazy load(1.5x times faster than packer)
-* LSP support for go, c, rust, python, json, js, verilog, etc
-* Terminal, file explorer
-* Dashboard
-* Rainbow indents
-* Git signs
-* In file and fuzzy search(ripgrep is needed)
-* LeetCode integration for solving leetcode problems
-* Snippets engine for automatic code completion
-* Intellisense and code completion with nvim-cmp
-* LLM based support with inbuilt GPT prompt reader (need GPT api key)
-* Automatic code generation with Codeium
-* VimTeX keybindings, snippets, and full support for writing papers, completing homework assignments, etc.
-* Smooth, lossless note taking with Obsidian
-* (Experimental) Dropbar support for documentation and buffer navigation
-* Buffer management, finder, and navigator with Harpoon
-* Zen mode for focused, undistracted coding
+```text
+init.lua                    Bootstrap Lazy and load core configuration
+lua/config/                 Editor options, keymaps, LSP, and theme
+lua/config/plugins/         Larger setup modules for individual plugins
+lua/plugins/                Lazy plugin specs grouped by purpose
+lua/codex/                  Codex-backed editor workflows
+lua/palettes/               Shared Silver Wolf color palette
+lua/snippets/               Custom snippets
+```
 
-![Screenshot1](https://github.com/RedFlame2112/nvim-config/blob/master/src/s1.png)
-![Screenshot4](https://github.com/RedFlame2112/nvim-config/blob/master/src/s4.png)
-![Screenshot5](https://github.com/RedFlame2112/nvim-config/blob/master/src/s5.png)
-![Screenshot6](https://github.com/RedFlame2112/nvim-config/blob/master/src/s6.png)
+Lazy imports every module under `lua/plugins/`. To add a plugin, place its spec in the closest existing category or create another category file; no central plugin list needs updating.
 
-### Some shortcuts:
-  * Ctrl+t - toggle terminal
-  * Ctrl+n - toggle file tree
-  * Ctrl+f - toggle Telescope 
-  * Ctrl+a - toggle live grep search
-  * Ctrl+s - toggle search field
-  * ZZ - in case you don't know how to exit vim
-  * Esc - to exit telescope
-  * Ctrl+u - rename function/variable/class/etc... using lsp
-  * Ctrl+p - view references
-  * Ctrl+i - go to implementation
-  * Ctrl+d - go to definition
-  * Ctrl+D - go to declaration
-  * ]+d - lsp diagnostic
-  * K - hover using lsp
-  * F2 - ChatGPT prompt (needs api key)
-  * ,+o+r - Open Git diagnostics
-  * ,+o+l - Open Workspace details
-  * ,r - ChatGPT running command tree
+Current plugin categories:
 
-You can find more details about keybinds through Which-key.nvim
+- `ai.lua` — Codeium and legacy ChatGPT integration
+- `coding.lua` — completion, LSP, language tooling, and Git signs
+- `navigation.lua` — fuzzy finding, bookmarks, and color previews
+- `qol.lua` — formatting, fast jumps, text objects, surrounds, and TODOs
+- `tools.lua` — Mason, notifications, diagnostics, and utility interfaces
+- `ui.lua` — theme, dashboard, statusline, explorer, and syntax UI
+- `workflow.lua` — debugging, testing, Harpoon, which-key, and Zen mode
+- `writing.lua` — snippets, Obsidian, LaTeX, and Typst
+
+## Useful mappings
+
+Press `<leader>` (comma) and wait for which-key to discover the full mapping tree.
+
+| Mapping | Action |
+| --- | --- |
+| `<C-n>` | Toggle file explorer |
+| `<C-t>` | Toggle terminal |
+| `<leader>ts` | Search project text |
+| `gd` / `gr` | Definition / references |
+| `<leader>ca` | LSP code action |
+| `<leader>cf` | Format buffer or selection (external formatter, then LSP fallback) |
+| `s` / `S` | Flash jump / syntax-aware Flash jump |
+| `gsa` / `gsd` / `gsr` | Add / delete / replace surroundings |
+| `]t` / `[t` | Next / previous TODO comment |
+| `<S-h>` / `<S-l>` | Previous / next buffer |
+| `[d` / `]d` | Previous / next diagnostic |
+| `<leader>du` | Toggle debugger UI |
+| `<leader>dc` | Start or continue debugging |
+| `<leader>db` | Toggle breakpoint |
+| `<leader>do` / `<leader>di` / `<leader>dO` | Step over / into / out |
+| `<leader>dg` | Debug nearest Go test |
+| `<leader>dp` | Debug nearest Python test |
+| `<leader>dj` | Debug nearest Java test |
+| `<leader>ai` | Complete a comment or selection with Codex |
+| `<leader>ap` | Enter an inline Codex prompt |
+
+For Codex completion, place the cursor on a natural-language comment and press `<leader>ai`. Codex runs asynchronously with read-only repository access and inserts the generated code below the instruction.
+
+## Requirements
+
+- Neovim 0.12+
+- Git and ripgrep
+- A Nerd Font
+- Language servers used by your projects
+- The Codex CLI authenticated with `codex login` for inline Codex completion
+
+## Debugging
+
+The DAP UI opens automatically when a session starts and closes when it exits. Mason installs the required adapters:
+
+- Go — Delve
+- Python — debugpy, including pytest method debugging
+- Rust — CodeLLDB launch and process-attach configurations
+- Java — eclipse.jdt.ls with the Microsoft Java debugger and Java test bundles
+
+Java language tooling runs on the installed JDK 21 while projects may target a different configured JDK. Project-specific `.vscode/launch.json` files are also recognized by nvim-dap.

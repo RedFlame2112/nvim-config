@@ -1,6 +1,7 @@
 vim.g.mapleader = ','
+vim.g.maplocalleader = ','
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
+if not vim.uv.fs_stat(lazypath) then
   vim.fn.system({
     "git",
     "clone",
@@ -11,10 +12,13 @@ if not vim.loop.fs_stat(lazypath) then
   })
 end
 vim.opt.rtp:prepend(lazypath)
-require('lazy').setup('plugins')
+require('lazy').setup({
+  spec = { { import = 'plugins' } },
+  change_detection = { notify = false },
+  checker = { enabled = true, notify = false },
+  ui = { border = "rounded" },
+})
 
-require('bindings')
-require('opts')
-require('colorscheme')
---tabnine config
---require('tabnine')
+require('config.options')
+require('config.keymaps')
+require('config.theme')

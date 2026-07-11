@@ -4,7 +4,15 @@ return {
     lazy = true,
     cmd = { "Mason", "MasonInstall", "MasonInstallAll", "MasonUninstall", "MasonUninstallAll", "MasonLog" },
     opts = {
-      ensure_installed = {}, -- not an option from mason.nvim
+      -- Debug adapters used by config.plugins.dap and config.plugins.java.
+      ensure_installed = {
+        "codelldb",
+        "debugpy",
+        "delve",
+        "java-debug-adapter",
+        "java-test",
+        "jdtls",
+      },
       ui = {
         icons = {
           package_pending = " ",

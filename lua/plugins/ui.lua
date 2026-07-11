@@ -27,20 +27,7 @@ return {
     config = function()
       require('nvim-treesitter.configs').setup(require('config.plugins.treesitter'))
     end,
-    event = {
-      'BufReadPost *.go',
-      'BufReadPost *.rs',
-      'BufReadPost *.c',
-      'BufReadPost *.gcc',
-      'BufReadPost *.h',
-      'BufReadPost *.ts',
-      'BufReadPost *.tsx',
-      'BufReadPost *.js',
-      'BufReadPost *.html',
-      'BufReadPost *.css',
-      'BufReadPost *.scss',
-      'BufReadPost *.lua',
-    },
+    event = { 'BufReadPost', 'BufNewFile' },
     lazy = true,
   }, 
   { "Bekaboo/dropbar.nvim", event = "UIEnter", opts = {} },

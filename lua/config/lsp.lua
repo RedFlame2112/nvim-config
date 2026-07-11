@@ -62,15 +62,6 @@ return function()
     end,
   })
 
-  local format_group = vim.api.nvim_create_augroup("SilverWolfFormat", { clear = true })
-  vim.api.nvim_create_autocmd("BufWritePre", {
-    group = format_group,
-    pattern = { "*.go", "*.c", "*.h", "*.rs", "*.ts", "*.tsx", "*.js", "*.jsx", "*.v", "*.sv" },
-    callback = function(args)
-      vim.lsp.buf.format({ bufnr = args.buf, timeout_ms = 2000 })
-    end,
-  })
-
   vim.api.nvim_create_autocmd("LspAttach", {
     group = vim.api.nvim_create_augroup("SilverWolfLspKeys", { clear = true }),
     callback = function(args)
@@ -84,7 +75,9 @@ return function()
       map("K", function() vim.lsp.buf.hover({ border = border }) end, "Hover documentation")
       map("<leader>cr", vim.lsp.buf.rename, "Rename")
       map("<leader>ca", vim.lsp.buf.code_action, "Code action")
-      map("<leader>cf", function() vim.lsp.buf.format({ async = true }) end, "Format")
+      map("<leader>cf", function()
+        require("conform").format({ async = true, lsp_format = "fallback" })
+      end, "Format")
     end,
   })
 end

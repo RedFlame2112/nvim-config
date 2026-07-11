@@ -48,13 +48,6 @@ return {
   },
 
   {
-    'numToStr/Comment.nvim',
-    config = function()
-        require('Comment').setup()
-    end,
-    lazy = true,
-  },
-  {
     'lukas-reineke/indent-blankline.nvim',
     lazy = true,
     event = 'BufEnter',

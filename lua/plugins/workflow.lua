@@ -16,12 +16,21 @@ return {
   { 
     "rcarriga/nvim-dap-ui", 
     dependencies = {
-      "mfussenegger/nvim-dap", 
+      "mfussenegger/nvim-dap",
+      "williamboman/mason.nvim",
+      "mfussenegger/nvim-dap-python",
+      "leoluz/nvim-dap-go",
       "nvim-neotest/nvim-nio",
       "nvim-telescope/telescope-dap.nvim",
       "theHamsta/nvim-dap-virtual-text",
     },
     config = require('config.plugins.dap'),
+  },
+  {
+    "mfussenegger/nvim-jdtls",
+    ft = "java",
+    dependencies = { "mfussenegger/nvim-dap", "hrsh7th/cmp-nvim-lsp" },
+    config = require("config.plugins.java"),
   },
   {
     'folke/zen-mode.nvim',

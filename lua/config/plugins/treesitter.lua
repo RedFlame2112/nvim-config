@@ -1,6 +1,19 @@
 return {
   -- A list of parser names, or "all"
-  ensure_installed = { "c", "go", "rust", "javascript", "html", "scss", "css", "lua" },
+  ensure_installed = {
+    "c",
+    "css",
+    "go",
+    "html",
+    "java",
+    "javascript",
+    "json",
+    "lua",
+    "python",
+    "rust",
+    "scss",
+    "typescript",
+  },
 
   -- Install parsers synchronously (only applied to `ensure_installed`)
   sync_install = false,
